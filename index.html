@@ -15,7 +15,7 @@
     <main class="container">
         <h1>Weather Weekly Forecast</h1>
 
-        <div id="forecast"></div>
+        <ul class="forecaster" id="forecast"></ul>
     </main>
 
     <script>
@@ -32,7 +32,7 @@
             // let myKey = "63a5040ffb4562d7a4681117de3b9d0c"
             
             // let url = "https://api.openweathermap.org/data/2.5/weather?q=peshawar&appid=63a5040ffb4562d7a4681117de3b9d0c"
-         let url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=current,minutely,hourly&appid=63a5040ffb4562d7a4681117de3b9d0c" 
+            let url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=current,minutely,hourly&appid=63a5040ffb4562d7a4681117de3b9d0c" 
                      //  https://api.openweathermap.org/data/3.0/onecall?lat=    {lat}  &lon= {lon}      &exclude={part}                 &appid={API key}   
             getWeatherText(url);
             console.log(url)
@@ -71,13 +71,16 @@
                     today = today - 7;
                 }
 
+
+                let highTemp    = kToF(day.temp.max);
+                let lowTemp     = kToF(day.temp.min);
+
                 let dayOfWeek   = getDayOfWeek(today); 
                 let description = day.weather[0].description;
                 let icon        = day.weather[0].icon;
                 let sunrise     = timestampToTime(day.sunrise);
                 let sunset      = timestampToTime(day.sunset);
-                let highTemp    = kToF(day.temp.max);
-                let lowTemp     = kToF(day.temp.min);
+                
                 let humidity    = day.humidity;
                 let windSpeed   = day.wind_speed;
                 let WindGust    = day.wind_gust;
@@ -87,15 +90,18 @@
         }
 
         let displayWeatherDay = function(dayOfWeek, description, icon, sunrise, sunset, highTemp, lowTemp, humidity, windSpeed, WindGust) {
-            let out = "<div class='dayCard'><img src='https://openweathermap.org/img/wn/" + icon + ".png' />"
-                out += "<h2>" + dayOfWeek + "</h2>";
+            let out = "<li class='dayCard'><div class='card-header'><h2 class='day-title'>" + dayOfWeek + "</h2> <img src='https://openweathermap.org/img/wn/" + icon + ".png' /></div>"
+               
+               
                 out += "<h3>" + description + "</h3>";
-                out += "<p>Sunrise: " + sunrise + "</p>";
-                out += "<p>Sunset: " + sunset + "</p>";
                 out += "<p>High Temperature: " + highTemp + "</p>";
                 out += "<p>Low Temperature: " + lowTemp + "</p>";
+
+                out += "<p>Sunrise: " + sunrise + "</p>";
+                out += "<p>Sunset: " + sunset + "</p>";
+                
                 out += "<p>Humidity: " + humidity + "</p>";
-                out += "<p>Wind Speed: " + Math.round(windSpeed) + " with gusts up to " + Math.round(WindGust) + "</p></div>";
+                out += "<p>Wind Speed: " + Math.round(windSpeed) + " with gusts up to " + Math.round(WindGust) + "</p></li>";
                 
                 document.getElementById("forecast").innerHTML += out;
         }

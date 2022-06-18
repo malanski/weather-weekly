@@ -1,18 +1,23 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+
 }
 
 body, html {
     background-color: rgb(41, 41, 41);
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
     font-family: "Arial Narrow", sans-serif;
     color: white;
 }
-
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
 .container {
-    width: 360px;
+    width: 100vw;
     margin: 0 auto 0 auto;
 }
 
@@ -24,17 +29,135 @@ h1 {
     width: 90%;
     margin: 20px auto;
 }
-
+.forecaster {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
 .dayCard {
-    color: white;
+    width: 320px;
+    height: 320px;
+    margin: 10px;
+    color: black;
     border: 1px solid white;
     border-radius: 20px;
-    background-color: rgb(105, 105, 105);
     padding: 20px;
-    margin-bottom: 20px;
     box-shadow: 5px 10px 4px -1px rgba(0, 0, 0, 0.34);
+    overflow-y: hidden;
+    font-size: 16px;
+}
+.dayCard:first-child {
+    width: 400px;
+    height: 400px;
+    font-size: large;
+    font-weight: 900;
+    padding: 40px 40px 20px 20px;
+    box-shadow: 5px 10px 16px 10px rgba(0, 0, 0, 0.34);
+    background-color: rgb(84, 84, 84);
+}
+p {
+    letter-spacing: -1px;
+}
+.dayCard:hover {
+    box-shadow: 5px 10px 20px -1px rgba(0, 0, 0, 0.34);
+    border-color:  greenyellow;
+   
+
 }
 
+.dayCard:first-child:hover {
+    box-shadow: 5px 10px 40px 10px rgba(0, 0, 0, 0.34);
+
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid white;
+    background: gray;
+    opacity: 0.5;
+    transition: 0.5s all ease-in-out;
+}
+.dayCard:hover .card-header {
+    opacity: 1;
+}
+
+.dayCard:first-child {
+    background-image: url(../sky-bg.jpeg);
+    background-position: center;
+    background-size: cover;
+}
+
+
+.dayCard:nth-child(2)  {
+    background-image: url(../sky4.jpg);
+    background-position: center;
+    background-size: cover;
+    color: black;
+    font-weight: 900;
+}
+
+.dayCard:nth-child(3)  {
+    background-image: url(../sky1.jpg);
+    background-position: center;
+    background-size: cover;
+    color: black;
+    font-weight: 900;
+}
+
+.dayCard:nth-child(4)  {
+    background-image: url(../sky2.jpg);
+    background-position: center;
+    background-size: cover;
+    color: black;
+    font-weight: 900;
+}
+
+.dayCard:nth-child(5)  {
+    background-image: url(../sky3.jpg);
+    background-position: center;
+    background-size: cover;
+    color: black;
+    font-weight: 900;
+}
+
+.dayCard:nth-child(6)  {
+    background-image: url(../sky4.jpg);
+    background-position: center;
+    background-size: cover;
+    color: black;
+    font-weight: 900;
+}
+
+.dayCard:nth-child(7)  {
+    background-image: url(../sky5.jpg);
+    background-position: center;
+    background-size: cover;
+    color: black;
+    font-weight: 900;
+}
+
+.dayCard:nth-child(8)  {
+    background-image: url(../sky6.jpg);
+    background-position: center;
+    background-size: cover;
+    color: black;
+    font-weight: 900;
+}
+
+.day-title {
+    align-self: flex-end;
+    
+}
+
+h3 {
+    text-align: right;
+}
 .dayCard img {
     border: 1px solid white;
     border-radius: 50%;
@@ -43,6 +166,13 @@ h1 {
     width: 30%;
 }
 
+.dayCard:first-child img {
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    background-color: rgb(97, 126, 141);
+    float: right;
+    width: 40%;
+}
 .dayCard p {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -51,4 +181,17 @@ h1 {
 .dayCard h2, .dayCard h3 {
     margin: 5px;
     margin-bottom: 5px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .dayCard:first-child {
+        padding: 20px;
+        font-size:medium;
+        width: 340px;
+    }
+    .dayCard:first-child .card-header {
+    
+        margin-right: 0;
+    }
 }
